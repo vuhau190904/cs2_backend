@@ -56,14 +56,14 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         if (fs.existsSync(filePath)) {
             fs.unlinkSync(filePath);
         }
-        const pdfPath = `/Users/vuhau190904/cs2_backend/output/${cached}.pdf`;
+        const pdfPath = path.join(__dirname, 'output', `${cached}.pdf`);
         res.download(pdfPath, `${id}.pdf`);
     } else {
         await ocrQueue.add('ocr-job', { filePath, jobId: id });
         pdfEvents.on('completed', async ({ returnvalue }) => {
             const returnedJobId = returnvalue?.jobId;
             if (returnedJobId === id) {
-                const pdfPath = `/Users/vuhau190904/cs2_backend/output/${id}.pdf`;
+                const pdfPath = path.join(__dirname, 'output', `${id}.pdf`);
                 res.download(pdfPath, `${id}.pdf`);
                 await redis.set(`ocr:${hash}`, id, 'EX', 600);
             }

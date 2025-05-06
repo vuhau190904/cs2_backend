@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const cron = require('node-cron');
 
-const outputDir = '/Users/vuhau190904/cs2_backend/output';
+const outputDir = __dirname;
+
 
 // Maximum file age to keep (10 minutes = 10 * 60 * 1000 ms)
 const maxFileAge = 10 * 60 * 1000;

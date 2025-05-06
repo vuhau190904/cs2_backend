@@ -3,10 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 async function createPDF(text, jobId) {
-    const outputDir = path.join("/Users/vuhau190904/cs2_backend/output");
-
+    const outputDir = path.join(__dirname, "../..", "output");
     const outFile = path.join(outputDir, `${jobId}.pdf`);
-
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true });
     }
