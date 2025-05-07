@@ -7,4 +7,4 @@ new Worker('translate', async job => {
   const { text, jobId } = job.data;
   const translated = await translate(text);
   await pdfQueue.add('pdf-job', { text: translated, jobId });
-}, {connection});
+}, {connection, concurrency: 2});

@@ -7,4 +7,4 @@ new Worker('pdf', async job => {
   const { text, jobId } = job.data;
   await createPDF(text, jobId);
   return {jobId};
-}, {connection});
+}, {connection, concurrency: 2});
