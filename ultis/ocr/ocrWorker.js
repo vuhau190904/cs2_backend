@@ -9,4 +9,4 @@ new Worker('ocr', async job => {
   const { filePath, jobId } = job.data;
   const text = await imageToText(filePath);
   await translateQueue.add('translate-job', { text, jobId });
-}, {connection});
+}, {connection, concurrency: 4});
