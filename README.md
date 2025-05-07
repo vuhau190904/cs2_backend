@@ -53,7 +53,7 @@ pdf_queue
 4. Caching (Redis)
 Tăng tốc xử lý và giảm tải:
 
-Cache file hình ảnh được tải lên
+Cache hình ảnh được gửi
 
 5. Monitoring
 Giám sát hiệu suất hệ thống:
@@ -78,11 +78,8 @@ $ npm install
 # Tạo thư mục lưu output
 $ mkdir output
 
+# Tạo thư mục lưu output
+redis sever đang chạy
+
 # Chạy ứng dụng
 $ npm start
-🗂️ Cấu trúc chức năng
-File	Chức năng
-utils/ocr.js	Chuyển đổi ảnh sang text (OCR)
-utils/translate.js	Dịch tiếng Anh sang tiếng Việt
-utils/pdf.js	Tạo file PDF từ nội dung text
-
