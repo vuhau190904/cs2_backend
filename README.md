@@ -80,9 +80,9 @@ Tăng tốc và giảm tải hệ thống:
 | Số ảnh xử lý                 | 10 ảnh x 100 lần = 1.000 request    | 1.000 request                    |
 | Thời gian trung bình         | 934ms                               | 206ms                            |
 | Throughput                   | ~16.7 request/giây                  | ~16.9 request/giây               |
-| Tỷ lệ lỗi                    | 23.4% 500, 76.6% 429 (Throttle)     | 0%                               |
-| Độ ổn định                   | Kém, dễ quá tải                     | Tốt, không lỗi dù tải tương đương |
-| Kết luận                     | Không chịu tải tốt với concurrency  | Ổn định hơn nhờ đa tiến trình    |
+| Tỷ lệ lỗi                    | 0%                                  | 0%                               |
+| Độ ổn định                   | Vừa                                 | Tốt, không lỗi dù tải tương đương |
+| Kết luận                     | Hệ thống hoạt động tốt với khối lượng thấp nhưng thời gian xử lý trung bình cao.                        | Ổn định hơn nhờ đa tiến trình    |
 
 > ⏳ Việc sử dụng nhiều worker rõ ràng giúp giảm thời gian phản hồi từ **934ms xuống 206ms** cho mỗi request – gấp hơn 4 lần nhanh hơn so với hệ thống 1 worker đơn lẻ. Đồng thời, hệ thống mới loại bỏ hoàn toàn lỗi server và throttle khi xử lý đồng thời.
 
@@ -93,7 +93,6 @@ Tăng tốc và giảm tải hệ thống:
 Hệ thống sau khi cải tiến tuy có độ trễ cao hơn cho từng request đơn lẻ do sử dụng message queue, nhưng **tổng thể hiệu suất và khả năng mở rộng đã được cải thiện đáng kể**:
 
 - **Ổn định hơn** khi xử lý tải lớn.
-- **Giảm thiểu lỗi server (500)** và **lỗi giới hạn tốc độ (429)**.
 - **Hỗ trợ cache**, giúp tiết kiệm thời gian và tài nguyên khi xử lý ảnh đã tồn tại.
 
 Hệ thống mới phù hợp cho các ứng dụng thực tế nơi người dùng có thể gửi nhiều ảnh và cần khả năng phục hồi nhanh chóng.
